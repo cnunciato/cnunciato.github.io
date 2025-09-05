@@ -1,0 +1,15 @@
+steps:
+  - label: ":docusaurus: Install, build, and deploy"
+    command: |
+      git config --global user.name "$${GIT_USER_NAME}"
+      git config --global user.email "$${GIT_USER_EMAIL}"
+      yarn install
+      yarn deploy
+    plugins:
+      - secrets#v1.0.0:
+          variables:
+            GIT_PASS: GITHUB_TOKEN
+    env:
+      GIT_USER: cnunciato
+      GIT_USER_NAME: Christian Nunciato
+      GIT_USER_EMAIL: chris@nunciato.org
